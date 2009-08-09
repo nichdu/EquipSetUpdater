@@ -30,12 +30,14 @@ f:RegisterEvent("ADDON_LOADED")
 function f:ADDON_LOADED(event, addon)
 	if addon:lower() ~= "equipsetupdater" then return end
 
-	GearManagerDialogSaveSet:SetWidth(80)
-	GearManagerDialogDeleteSet:SetWidth(80)
+	GearManagerDialogSaveSet:SetWidth(60)
+	GearManagerDialogDeleteSet:SetWidth(60)
+	GearManagerDialogEquipSet:SetPoint("TOPLEFT", GearManagerDialogDeleteSet, "TOPRIGHT", 60, 0)
+	GearManagerDialogEquipSet:SetPoint("BOTTOMRIGHT", GearManagerDialogSaveSet, "BOTTOMLEFT", -1, 0)
 
 	local butt = CreateFrame("Button", nil, GearManagerDialog)
 	butt:SetPoint("TOPLEFT", GearManagerDialogDeleteSet, "TOPRIGHT", 1, 0)
-	butt:SetPoint("BOTTOMRIGHT", GearManagerDialogSaveSet, "BOTTOMLEFT", -1, 0)
+	butt:SetPoint("BOTTOMRIGHT", GearManagerDialogEquipSet, "BOTTOMLEFT", -1, 0)
 
 	butt:SetDisabledFontObject(GameFontDisable)
 	butt:SetHighlightFontObject(GameFontHighlight)
